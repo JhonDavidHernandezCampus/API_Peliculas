@@ -18,6 +18,7 @@ body {
 	text-align: center;
 	height: 200px;
 	width: 100%;
+	border-radius: 20px;
 	background: #241744;
 	color: #fff;
 	font-family: 'Montserrat', sans-serif;

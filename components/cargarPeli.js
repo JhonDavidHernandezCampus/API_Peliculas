@@ -1,12 +1,8 @@
-
 let pag = 1;
 const btnAnterior = document.querySelector("#btnAnterior");
 const btnSiguiente = document.querySelector("#btnSiguiente")
-
-
 export default{
     /* llamamos a los datos del config (local storage) */
-    
     eventoPaginas(){
         btnSiguiente.addEventListener('click' , ()=>{
             pag+=1;
@@ -19,15 +15,17 @@ export default{
     },
 
     cargarPeliculas()  {
+/* 
+        const ws2 = new Worker("../storage/wsCargarPeliculas.js", {type:"module"})
+        ws2.postMessage({module:"traerData", data:"traerData"})
+ */
         try{
             const cargarpeliuculas2 = async()=>{
                 const respuesta = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=9365b5d7f920750762284850b585bdb0&language=es=MX&page=${pag}`);
-                
                 /* en caso de que le is no se correcto */
                 if (respuesta.status === 200 ) {
                     const datos  = await respuesta.json();
                     const data =datos.results;
-
                     this.pintarPeliculas(data);
                 }else if(respuesta.status===401) {
                     console.log("Pusiste el nombre ed ela pelicula mal");
@@ -41,20 +39,22 @@ export default{
         }
 
     },
+    buscarPeliculas(){
+        const input = document.querySelector("#nombre")
+        input.addEventListener("input", function(){
+            console.log(input.value);
+        })
+    },
+
 
     pintarPeliculas(data){
-        let pelis = "";
-        data.forEach(e => {
-            pelis += `
-            <div class="pelicula">
-                <img class="poster" src="https://image.tmdb.org/t/p/w500/${e.poster_path}">
-                <h3 class="titulo">${e.title}<h3>
-            </div>
-            
-            `;
+        const ws = new Worker("../storage/wsCargarPeliculas.js", {type:"module"});
+        ws.postMessage({module:"pintarPeliculas",data:data})
+        ws.addEventListener("message", (e)=>{
+            //let doc = new DOMParser().parseFromString(e.data, "text/html");
+            const contenedor = document.querySelector("#contenedor");
+            contenedor.innerHTML=e.data;
+            ws.terminate();
         });
-        const contenedor = document.querySelector("#contenedor");
-        contenedor.innerHTML=pelis;
-
     }
 }
