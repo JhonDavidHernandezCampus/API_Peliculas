@@ -1,4 +1,4 @@
-let pag = 1;
+/* let pag = 1;
 
 export default{
     dataPeliculas(){
@@ -17,4 +17,4 @@ export default{
 
             
     },
-}
+} */

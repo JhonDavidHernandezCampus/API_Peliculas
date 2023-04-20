@@ -1,6 +1,4 @@
-import config from "../storage/config.js"
 
-console.log(config);
 let pag = 1;
 const btnAnterior = document.querySelector("#btnAnterior");
 const btnSiguiente = document.querySelector("#btnSiguiente")
@@ -10,9 +8,6 @@ export default{
     /* llamamos a los datos del config (local storage) */
     
     eventoPaginas(){
-        config.dataPeliculas();
-        Object.assign(this, JSON)
-
         btnSiguiente.addEventListener('click' , ()=>{
             pag+=1;
             (pag<1000)? this.cargarPeliculas():"";
