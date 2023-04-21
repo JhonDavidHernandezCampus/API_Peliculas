@@ -5,5 +5,7 @@ cargarPeli.eventoPaginas();
 
 cargarPeli.cargarPeliculas();
 
-
-cargarPeli.buscarPeliculas();
+const input = document.querySelector("#nombre");
+input.addEventListener('input', function(){
+    cargarPeli.buscarPeliculas(input.value);
+})

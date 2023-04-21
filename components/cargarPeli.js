@@ -13,7 +13,6 @@ export default{
             (pag>1)?this.cargarPeliculas():"";
         })
     },
-
     cargarPeliculas()  {
         try{
             const cargarpeliuculas2 = async()=>{
@@ -22,7 +21,6 @@ export default{
                 if (respuesta.status === 200 ) {
                     const datos  = await respuesta.json();
                     const data =datos.results;
-                    console.log(data);
                     this.pintarPeliculas(data);
                 }else if(respuesta.status===401) {
                     console.log("Pusiste el nombre ed ela pelicula mal");
@@ -34,27 +32,31 @@ export default{
         }catch(error){
             console.log(error);
         }
-
     },
-    buscarPeliculas(){
-        const input = document.querySelector("#nombre")
 
-        input.addEventListener("input", function(){
-            const buscarPeliculas = async()=>{
-                let nom =input.value;
-                const respSearch = await fetch(`https://api.themoviedb.org/3/search/company?api_key=9365b5d7f920750762284850b585bdb0&s=${nom}`)
-                const dataSearch  = await respSearch.json();
-                console.log(nom, "lo que esta en el input");
-                console.log(respSearch,"datos que me traigo del api");
-                console.log(dataSearch.results,"datasearch");
-    
+
+    buscarPeliculas(nombrePelicula){
+        console.log(nombrePelicula);
+        try{
+            const cargarpeliuculas2 = async()=>{
+                const respSearch = await fetch(`https://api.themoviedb.org/3/search/company?api_key=9365b5d7f920750762284850b585bdb0&query=${nombrePelicula}`);
+                /* en caso de que le is no se correcto  */
+                if (respSearch.status === 200 ) {
+                    const datos  = await respSearch.json();
+                    const data =datos.results;
+                    console.log(data);
+                    this.pintarPeliculas(data);
+                }else if(respSearch.status===401) {
+                    console.log("Pusiste el nombre ed ela pelicula mal");
+                }else if(respSearch.status === 404) {
+                    console.log("Se presento un error no identificado");
+                }
             }
-            buscarPeliculas();
-        })
+            cargarpeliuculas2();
+        }catch(error){
+            console.log(error);
+        }
     },
-
-
-
 
     pintarPeliculas(data){
         const ws = new Worker("../storage/wsCargarPeliculas.js", {type:"module"});
