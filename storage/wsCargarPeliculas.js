@@ -1,6 +1,6 @@
 let ws = {
     pintarPeliculas(data){
-         let pelis = "";
+        let pelis = "";
         data.forEach(e => {
             pelis += `
             <div class="pelicula">

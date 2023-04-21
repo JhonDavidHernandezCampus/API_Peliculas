@@ -15,10 +15,6 @@ export default{
     },
 
     cargarPeliculas()  {
-/* 
-        const ws2 = new Worker("../storage/wsCargarPeliculas.js", {type:"module"})
-        ws2.postMessage({module:"traerData", data:"traerData"})
- */
         try{
             const cargarpeliuculas2 = async()=>{
                 const respuesta = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=9365b5d7f920750762284850b585bdb0&language=es=MX&page=${pag}`);
@@ -26,6 +22,7 @@ export default{
                 if (respuesta.status === 200 ) {
                     const datos  = await respuesta.json();
                     const data =datos.results;
+                    console.log(data);
                     this.pintarPeliculas(data);
                 }else if(respuesta.status===401) {
                     console.log("Pusiste el nombre ed ela pelicula mal");
@@ -41,10 +38,22 @@ export default{
     },
     buscarPeliculas(){
         const input = document.querySelector("#nombre")
+
         input.addEventListener("input", function(){
-            console.log(input.value);
+            const buscarPeliculas = async()=>{
+                let nom =input.value;
+                const respSearch = await fetch(`https://api.themoviedb.org/3/search/company?api_key=9365b5d7f920750762284850b585bdb0&s=${nom}`)
+                const dataSearch  = await respSearch.json();
+                console.log(nom, "lo que esta en el input");
+                console.log(respSearch,"datos que me traigo del api");
+                console.log(dataSearch.results,"datasearch");
+    
+            }
+            buscarPeliculas();
         })
     },
+
+
 
 
     pintarPeliculas(data){
