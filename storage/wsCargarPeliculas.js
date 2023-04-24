@@ -3,10 +3,10 @@ let ws = {
         let pelis = "";
         data.forEach(e => {
             pelis += `
-            <div class="pelicula">
-                <img class="poster" src="https://image.tmdb.org/t/p/w500/${e.poster_path}">
-                <h3 class="titulo">${e.title}<h3>
-            </div>
+                <div class="pelicula ">
+                    <img class="poster" src="https://image.tmdb.org/t/p/w500/${e.poster_path}">
+                    <h3 class="titulo">${e.title}<h3>
+                </div>
                 `;
         }); 
     return pelis;   

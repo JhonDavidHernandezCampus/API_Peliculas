@@ -7,10 +7,13 @@ export default{
         btnSiguiente.addEventListener('click' , ()=>{
             pag+=1;
             (pag<1000)? this.cargarPeliculas():"";
+            console.log(pag);
+
         })
         btnAnterior.addEventListener("click",()=>{
             pag-=1;
             (pag>1)?this.cargarPeliculas():"";
+            console.log(pag);
         })
     },
     cargarPeliculas()  {
@@ -38,7 +41,10 @@ export default{
     buscarPeliculas(nombrePelicula){
         try{
             const cargarpeliuculas2 = async()=>{
-                const respSearch = await fetch(`https://api.themoviedb.org/3/search/company?api_key=9365b5d7f920750762284850b585bdb0&query=${nombrePelicula}`);
+                const respSearch = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=9365b5d7f920750762284850b585bdb0&query=${nombrePelicula}`);
+                //console.log(datos);
+                
+                
                 /* en caso de que le is no se correcto  */
                 if (respSearch.status === 200 ) {
                     const datos  = await respSearch.json();
@@ -49,7 +55,7 @@ export default{
                     console.log("Pusiste el nombre ed ela pelicula mal");
                 }else if(respSearch.status === 404) {
                     console.log("Se presento un error no identificado");
-                }
+                } 
             }
             cargarpeliuculas2();
         }catch(error){

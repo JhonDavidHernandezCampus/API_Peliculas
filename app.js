@@ -1,7 +1,7 @@
 import cargarPeli from "./components/cargarPeli.js";
 
 
-//cargarPeli.eventoPaginas();
+cargarPeli.eventoPaginas();
 
 cargarPeli.cargarPeliculas();
 
