@@ -1,11 +1,15 @@
 import cargarPeli from "./components/cargarPeli.js";
 
 
-cargarPeli.eventoPaginas();
+//cargarPeli.eventoPaginas();
 
 cargarPeli.cargarPeliculas();
 
 const input = document.querySelector("#nombre");
 input.addEventListener('input', function(){
-    cargarPeli.buscarPeliculas(input.value);
-})
+    if (input.value==""){
+        cargarPeli.eventoPaginas();
+    }else{
+        cargarPeli.buscarPeliculas(input.value);
+    }
+})                                                                                                                                                                                                                      

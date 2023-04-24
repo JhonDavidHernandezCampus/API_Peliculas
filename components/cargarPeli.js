@@ -36,7 +36,6 @@ export default{
 
 
     buscarPeliculas(nombrePelicula){
-        console.log(nombrePelicula);
         try{
             const cargarpeliuculas2 = async()=>{
                 const respSearch = await fetch(`https://api.themoviedb.org/3/search/company?api_key=9365b5d7f920750762284850b585bdb0&query=${nombrePelicula}`);
