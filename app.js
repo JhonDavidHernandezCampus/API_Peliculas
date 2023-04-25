@@ -12,4 +12,4 @@ input.addEventListener('input', function(){
     }else{
         cargarPeli.buscarPeliculas(input.value);
     }
-})                                                                                                                                                                                                                      
+})                     

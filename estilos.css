@@ -31,7 +31,7 @@ body {
 }
 
 
- .contenedor {
+.contenedor {
 	width: 90%;
 	margin: 40px auto 100px auto;
 	display: flex;
@@ -52,6 +52,22 @@ body {
 	margin-bottom: 10px;
 	border-radius: 15px;
 }
+
+.poster2{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	transition: transform 0.3s ease-in-out;
+}
+
+
+
+
+
+
+
+
 
 .paginacion {
 	position: fixed;
@@ -92,6 +108,9 @@ input{
 
 .contenido{
 	position: relative;
+	overflow: hidden;
+
+	
 }
 
 .animacion{
@@ -99,14 +118,56 @@ input{
 	display: none;
 	top: 0px;
 	left: 0px;
-	font-size: 17px;
-	background-color: rgba(0,0,0,.7);
+	border: black 0px solid;
+	border-radius: 10px;
+	height: 90%;
+	width: 98%;
+	font-size: 12px;
+	background-color: rgba(0,0,0,.6);
+	overflow: scroll;
+	padding: 10px;
+	overflow: hidden;
+
 }
 
-.contenido:hover .animacion{
+.pelicula:hover{
+	position: relative;
+	transform: scale(1.5);
+	z-index: 1;
+	transition: all 1s;
+
+}  
+.pelicula:hover .animacion{
 	display: block;
+	
 }
 
-.poster:hover + .contenido .animacion{
+
+
+
+
+
+
+
+
+
+/* .contenido:hover .animacion{
 	display: block;
+	z-index: 1;
 }
+
+
+.poster:hover + .poster2,
+.poster2:hover {
+	display: block;
+	z-index: 1;
+    transform: translate(-50%, -40%) scale(1);
+	z-index: 1;
+	border-radius: 20px;
+}
+
+.poster:hover .animacion{
+	display: block;
+	z-index: 1;
+}
+ */

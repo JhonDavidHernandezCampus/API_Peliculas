@@ -1,20 +1,20 @@
-let pag = 1;
 const btnAnterior = document.querySelector("#btnAnterior");
 const btnSiguiente = document.querySelector("#btnSiguiente")
 export default{
     /* llamamos a los datos del config (local storage) */
     eventoPaginas(){
+        let pag = 1;
         btnSiguiente.addEventListener('click' , ()=>{
             pag+=1;
-            (pag<1000)? this.cargarPeliculas():"";
+            (pag<1000)? this.cargarPeliculas(pag):"";
 
         })
         btnAnterior.addEventListener("click",()=>{
             pag-=1;
-            (pag>1)?this.cargarPeliculas():"";
+            (pag>1)?this.cargarPeliculas(pag):"";
         })
     },
-    cargarPeliculas()  {
+    cargarPeliculas(pag)  {
         try{
             const cargarpeliuculas2 = async()=>{
                 const respuesta = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=9365b5d7f920750762284850b585bdb0&language=es=MX&page=${pag}`);
@@ -24,9 +24,9 @@ export default{
                     const data =datos.results;
                     this.pintarPeliculas(data);
                 }else if(respuesta.status===401) {
-                    console.log("Pusiste el nombre ed ela pelicula mal");
+                    console.log(" nombre de la pelicula mal");
                 }else if(respuesta.status === 404) {
-                    console.log("Se presento un error no identificado");
+                    console.log("error no identificado");
                 }
             }
             cargarpeliuculas2();
