@@ -27,7 +27,8 @@ body {
 .img1{
 	position: absolute;
 	pointer-events: none;
-	width: 450px;
+	width: 430px;
+	top: -70px;
 }
 
 
@@ -62,13 +63,6 @@ body {
 }
 
 
-
-
-
-
-
-
-
 .paginacion {
 	position: fixed;
 	bottom: 0;
@@ -78,6 +72,7 @@ body {
 	justify-content: center;
 	gap: 20px;
 	padding: 10px;
+	z-index: 1;
 }
 
 .paginacion button {
@@ -120,19 +115,18 @@ input{
 	left: 0px;
 	border: black 0px solid;
 	border-radius: 10px;
-	height: 90%;
+	height: 95%;
 	width: 98%;
 	font-size: 12px;
 	background-color: rgba(0,0,0,.6);
+	padding: 30px;
 	overflow: scroll;
-	padding: 10px;
-	overflow: hidden;
 
 }
 
 .pelicula:hover{
 	position: relative;
-	transform: scale(1.5);
+	transform: scale(1.11);
 	z-index: 1;
 	transition: all 1s;
 
@@ -141,14 +135,6 @@ input{
 	display: block;
 	
 }
-
-
-
-
-
-
-
-
 
 
 /* .contenido:hover .animacion{

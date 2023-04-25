@@ -14,7 +14,7 @@ let ws = {
                         <p>${e.overview}</p>
                     </div>
                 </div>    
-                    `;
+                        `;
         }); 
     return `
         <div class="row">

@@ -18,9 +18,13 @@ export default{
         try{
             const cargarpeliuculas2 = async()=>{
                 const respuesta = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=9365b5d7f920750762284850b585bdb0&language=es=MX&page=${pag}`);
+                const respuestaVideos = await fetch(`https://api.themoviedb.org/3/movie/123/videos?api_key=9365b5d7f920750762284850b585bdb0&language=en-US`);
+
                 /* en caso de que le is no se correcto */
                 if (respuesta.status === 200 ) {
                     const datos  = await respuesta.json();
+                    const datosVideo = await respuestaVideos.json();
+                    console.log(datosVideo);
                     const data =datos.results;
                     this.pintarPeliculas(data);
                 }else if(respuesta.status===401) {
