@@ -4,7 +4,6 @@
 let ws = {
     pintarPeliculas(data){
         let pelis = "";
-        console.log(data);
         //console.log(respuestaVideos);
         data.forEach(e => {
             pelis += `
@@ -18,7 +17,7 @@ let ws = {
                         <h1 class="titu">${e.title}</h1>
                         <p class="descrip">${e.overview}</p>
                         <div class="ver">
-                            <a  href="https://www.youtube.com/watch?v=y_t8B2gJbkI" class="btn btn-primary"> Trailer</a>
+                            <a  href="https://www.youtube.com/watch?v=y_t8B2gJbkI" class="btn btn-primary" target="_blank"> Trailer</a>
                         </div>
                     </div>
                 </div>    
