@@ -136,7 +136,24 @@ input{
 	
 }
 
+.titu{
+	font-size: xx-large;
+	color: rgb(148, 1, 1);
 
+}
+
+.descrip{
+	font-size: large;
+
+}
+
+.ver{
+	position: fixed;
+
+	bottom: 70px;
+	right: 40%;
+
+}
 /* .contenido:hover .animacion{
 	display: block;
 	z-index: 1;

@@ -1,6 +1,11 @@
+
+//import cargarVideos from "../components/cargarVideos.js";
+
 let ws = {
     pintarPeliculas(data){
         let pelis = "";
+        console.log(data);
+        //console.log(respuestaVideos);
         data.forEach(e => {
             pelis += `
                 <div class="col-sm-6 col-md-4 col-lg-3 mb-4 pelicula">
@@ -10,8 +15,11 @@ let ws = {
                         <h3 class="titulo">${e.title}<h3>
                     </div>
                     <div class="animacion">
-                        <h1>${e.title}</h1>
-                        <p>${e.overview}</p>
+                        <h1 class="titu">${e.title}</h1>
+                        <p class="descrip">${e.overview}</p>
+                        <div class="ver">
+                            <a  href="https://www.youtube.com/watch?v=y_t8B2gJbkI" class="btn btn-primary"> Trailer</a>
+                        </div>
                     </div>
                 </div>    
                         `;
