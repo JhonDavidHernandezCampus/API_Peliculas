@@ -2,10 +2,25 @@
 //import cargarVideos from "../components/cargarVideos.js";
 
 let ws = {
-    pintarPeliculas(data){
+    async trailesTraer(id){
+        let data;
+        try{
+            const respuestaVideos = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=3df70b20cbd027249f00bb9372cbadf9`);
+            const datosVideo = await respuestaVideos.json();
+            data = datosVideo.results;
+        } catch(error){
+            console.log(error);
+        }
+        return data
+    },
+
+    async pintarPeliculas(data){
         let pelis = "";
+        let res = await this.trailesTraer(data[0].id);
+        console.log(res,"esto es res");
         //console.log(respuestaVideos);
-        data.forEach(e => {
+        //console.log(((res[i].key)?res[i].key:""));
+        data.forEach( (e, i) => {
             pelis += `
                 <div class="col-sm-6 col-md-4 col-lg-3 mb-4 pelicula">
                     <div class="contenido">
@@ -17,7 +32,7 @@ let ws = {
                         <h1 class="titu">${e.title}</h1>
                         <p class="descrip">${e.overview}</p>
                         <div class="ver">
-                            <a  href="https://www.youtube.com/watch?v=y_t8B2gJbkI" class="btn btn-primary" target="_blank"> Trailer</a>
+                            <a  href="https://www.youtube.com/watch?v=$" class="btn btn-primary" target="_blank"> Trailer</a>
                         </div>
                     </div>
                 </div>    
@@ -28,8 +43,12 @@ let ws = {
             ${pelis}
         </div>`;   
     }
+    
+
+
 }
 
-self.addEventListener("message",(e) =>{
-    postMessage(ws[`${e.data.module}`](e.data.data));
+self.addEventListener("message",async(e) =>{
+    let result = await ws[`${e.data.module}`](e.data.data)
+    postMessage(result);
 })
