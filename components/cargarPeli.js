@@ -63,7 +63,7 @@ export default{
     },
 
     pintarPeliculas(data){
-        const ws = new Worker("../storage/wsCargarPeliculas.js", {type:"module"});
+        const ws = new Worker("storage/wsCargarPeliculas.js", {type:"module"});
         ws.postMessage({module:"pintarPeliculas",data:data})
         ws.addEventListener("message", (e)=>{
             //let doc = new DOMParser().parseFromString(e.data, "text/html");
