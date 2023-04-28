@@ -1,5 +1,4 @@
 import cargarPeli from "./components/cargarPeli.js";
-console.log("estamos");
 
 cargarPeli.eventoPaginas();
 cargarPeli.cargarPeliculas();
