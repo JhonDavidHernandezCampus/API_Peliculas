@@ -32,7 +32,7 @@ let ws = {
                         <h1 class="titu">${e.title}</h1>
                         <p class="descrip">${e.overview}</p>
                         <div class="ver">
-                            <a  href="https://www.youtube.com/watch?v=${res[i].key}" class="btn btn-primary" target="_blank"> Trailer</a>
+                            <a  href="https://www.youtube.com/watch?v=${""}" class="btn btn-primary" target="_blank"> Trailer</a>
                         </div>
                     </div>
                 </div>    
